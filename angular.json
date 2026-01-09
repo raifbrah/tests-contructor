@@ -6,7 +6,7 @@
   },
   "newProjectRoot": "projects",
   "projects": {
-    "test-constructor": {
+    "tests-constructor": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -29,9 +29,7 @@
                 "input": "public"
               }
             ],
-            "styles": [
-              "src/styles.scss"
-            ]
+            "styles": ["src/styles.scss"]
           },
           "configurations": {
             "production": {
@@ -61,10 +59,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "test-constructor:build:production"
+              "buildTarget": "tests-constructor:build:production"
             },
             "development": {
-              "buildTarget": "test-constructor:build:development"
+              "buildTarget": "tests-constructor:build:development"
             }
           },
           "defaultConfiguration": "development"

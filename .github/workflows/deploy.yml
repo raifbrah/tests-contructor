@@ -21,4 +21,4 @@ jobs:
     - name: Deploy
       uses: JamesIves/github-pages-deploy-action@v2.1.2
       with:
-        folder: dist/test-constructor
+        folder: dist/tests-constructor
