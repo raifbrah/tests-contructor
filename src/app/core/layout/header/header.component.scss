@@ -1,6 +1,25 @@
 .navbar {
   display: flex;
-  box-shadow: 2px 2px 9px #0003;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.06);
+  background-color: #ffffff;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.nav-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 12px 20px;
+}
+
+.nav-logo {
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: #111827;
 }
 
 .toolbar-spacer {
@@ -11,4 +30,9 @@
   list-style: none;
   display: flex;
   gap: 10px;
+}
+
+.nav-right :global(a[tuibutton]),
+.nav-right :global(button[tuibutton]) {
+  text-transform: none;
 }

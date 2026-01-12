@@ -1,12 +1,15 @@
-<input
-  class="test-title"
-  type="text"
-  [(ngModel)]="test.name"
-  [disabled]="testType === 'passing' || testType === 'watch'"
-  [ngClass]="{
-    'disabled-input-text': testType === 'passing' || testType === 'watch',
-  }"
-/>
+<div class="test-title-wrapper">
+  <input
+    class="test-title"
+    type="text"
+    [(ngModel)]="test.name"
+    [disabled]="testType === 'passing' || testType === 'watch'"
+    [ngClass]="{
+      'disabled-input-text': testType === 'passing' || testType === 'watch',
+    }"
+    placeholder="Название теста"
+  />
+</div>
 
 <div class="test-container">
   <div class="test-container__questions-list">
@@ -22,23 +25,32 @@
         (removeQuestion)="removeQuestion(question.id)"
       />
     }
-
     @if (testType !== 'passing' && testType !== 'watch') {
-      <button mat-icon-button class="add-card-btn" (click)="addNewQuestion()">
-        <mat-icon>add_circle</mat-icon>
+      <button
+        tuiButton
+        size="s"
+        appearance="primary"
+        class="add-card-btn"
+        (click)="addNewQuestion()"
+      >
+        Добавить вопрос
       </button>
     }
   </div>
 
   <div class="test-container__actions">
     @if (testType === 'passing') {
-      <a matButton="outlined" routerLink="">Выйти</a>
-      <button matButton="filled" (click)="completeTest()">Завершить</button>
+      <a tuiButton appearance="secondary" routerLink="">Выйти</a>
+      <button tuiButton appearance="primary" (click)="completeTest()">
+        Завершить
+      </button>
     } @else if (testType === 'watch') {
-      <a matButton="outlined" routerLink="/passed-tests">Выйти</a>
+      <a tuiButton appearance="secondary" routerLink="/passed-tests">Выйти</a>
     } @else {
-      <a matButton="outlined" routerLink="">Отменить</a>
-      <button matButton="filled" (click)="saveTest()">Сохранить</button>
+      <a tuiButton appearance="secondary" routerLink="">Отменить</a>
+      <button tuiButton appearance="primary" (click)="saveTest()">
+        Сохранить
+      </button>
     }
   </div>
 </div>

@@ -1,7 +1,20 @@
+.question-card {
+  border-radius: 0.75rem;
+  border: 1px solid #e5e7eb;
+  background: #ffffff;
+  padding: 1.25rem 1.5rem;
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.04);
+}
+
 .card__header {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.card__title {
+  display: flex;
+  align-items: center;
 }
 
 .card-actions {
@@ -17,6 +30,15 @@
   margin: 1rem 0;
 }
 
+.question__input-number {
+  font-size: 1.4rem;
+}
+
 .question__input {
   font-size: 1.4rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  padding: 0.35rem 0.6rem;
+  background: #ffffff;
+  color: #111827;
 }

@@ -1,16 +1,16 @@
 import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
-import { FormsModule, NgModel } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 import { Answer, Question } from '../../interfaces/test.interface';
-import { MatButtonModule } from '@angular/material/button';
 import { NgClass } from '@angular/common';
 import { TestsService } from '../../../../services/tests.service';
+import { TuiButton } from '@taiga-ui/core';
 
 @Component({
   selector: 'app-answer',
   templateUrl: './answer.component.html',
   styleUrl: './answer.component.scss',
   standalone: true,
-  imports: [FormsModule, MatButtonModule, NgClass],
+  imports: [FormsModule, TuiButton, NgClass],
 })
 export class AnswerComponent {
   @Input() answer!: Answer;

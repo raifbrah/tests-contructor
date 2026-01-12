@@ -1,17 +1,16 @@
-import { Component, computed, EventEmitter, Input, Output, signal } from '@angular/core';
-import { MatCardModule } from '@angular/material/card';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { AnswerComponent } from '../answer/answer.component';
 import { Question } from '../../interfaces/test.interface';
-import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
 import { NgClass } from '@angular/common';
+import { TuiButton } from '@taiga-ui/core';
 
 @Component({
   selector: 'app-question',
   templateUrl: './question.component.html',
   styleUrl: './question.component.scss',
   standalone: true,
-  imports: [MatCardModule, MatButtonModule, AnswerComponent, FormsModule, NgClass],
+  imports: [TuiButton, AnswerComponent, FormsModule, NgClass],
 })
 export class QuestionComponent {
   @Input() question!: Question;

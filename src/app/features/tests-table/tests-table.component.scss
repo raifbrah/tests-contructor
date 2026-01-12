@@ -3,3 +3,33 @@
   align-items: center;
   justify-content: space-between;
 }
+
+.tests-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+}
+
+.tests-table thead {
+  background: #f3f4f6;
+}
+
+.tests-table th,
+.tests-table td {
+  padding: 12px 16px;
+  text-align: left;
+  font-size: 14px;
+}
+
+.tests-table tbody tr:nth-child(even) {
+  background: #f9fafb;
+}
+
+.tests-table__actions {
+  display: flex;
+  gap: 8px;
+}

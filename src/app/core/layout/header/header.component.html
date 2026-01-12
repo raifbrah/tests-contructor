@@ -1,32 +1,68 @@
-<nav class="navbar">
-  <mat-toolbar class="nav-container">
+<header class="navbar">
+  <div class="nav-container">
+    <div class="nav-logo">Tests Constructor</div>
+    <span class="toolbar-spacer"></span>
+
     @if (authService.isLoggedIn()) {
-      <span class="toolbar-spacer"></span>
-      <ul class="nav-list nav-right">
-        <li class="nav-item">
-          <button matIconButton [matMenuTriggerFor]="menu">
-            <mat-icon>account_circle</mat-icon>
-          </button>
-          <mat-menu #menu="matMenu">
-            <a mat-menu-item routerLink="">Мои тесты</a>
-            <a mat-menu-item routerLink="/passed-tests">Завершенные</a>
-            <a mat-menu-item routerLink="/profile">Профиль</a>
-            <button mat-menu-item (click)="logout()">Выйти</button>
-          </mat-menu>
-        </li>
-      </ul>
+    <nav class="nav-list nav-right">
+      <a
+        tuiButton
+        size="s"
+        appearance="secondary"
+        routerLink=""
+        routerLinkActive="active"
+      >
+        Мои тесты
+      </a>
+      <a
+        tuiButton
+        size="s"
+        appearance="secondary"
+        routerLink="/passed-tests"
+        routerLinkActive="active"
+      >
+        Завершенные
+      </a>
+      <a
+        tuiButton
+        size="s"
+        appearance="secondary"
+        routerLink="/profile"
+        routerLinkActive="active"
+      >
+        Профиль
+      </a>
+      <button
+        tuiButton
+        size="s"
+        appearance="primary"
+        type="button"
+        (click)="logout()"
+      >
+        Выйти
+      </button>
+    </nav>
     } @else {
-      <span class="toolbar-spacer"></span>
-      <ul class="nav-list nav-right">
-        <li class="nav-item">
-          <a matButton routerLink="/register" routerLinkActive="active"
-            >Регистрация</a
-          >
-        </li>
-        <li class="nav-item">
-          <a matButton routerLink="/login" routerLinkActive="active">Войти</a>
-        </li>
-      </ul>
+    <nav class="nav-list nav-right">
+      <a
+        tuiButton
+        size="s"
+        appearance="secondary"
+        routerLink="/register"
+        routerLinkActive="active"
+      >
+        Регистрация
+      </a>
+      <a
+        tuiButton
+        size="s"
+        appearance="primary"
+        routerLink="/login"
+        routerLinkActive="active"
+      >
+        Войти
+      </a>
+    </nav>
     }
-  </mat-toolbar>
-</nav>
+  </div>
+</header>

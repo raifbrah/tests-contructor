@@ -1,7 +1,13 @@
+.test-title-wrapper {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
 .test-title {
   text-align: center;
   margin-bottom: 2rem;
-  width: 100%;
+  width: min-content;
   font-size: 2rem;
   font-weight: bold;
 }
@@ -10,12 +16,14 @@
   gap: 2rem;
   display: flex;
   flex-direction: column;
-  border: 1px solid #000;
+  border: 1px solid #e5e7eb;
   max-width: min(800px, 100%);
   margin: 0 auto;
 
   padding: 2rem min(4rem, 5%);
   border-radius: 1rem;
+  background: #ffffff;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
 }
 
 .test-container__questions-list {
@@ -32,20 +40,6 @@
 }
 
 .add-card-btn {
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: min-content;
   margin: 0 auto;
-
-  font-size: 70px;
-  width: 70px;
-  height: 70px;
-
-  &>* {
-    position: absolute;
-    font-size: inherit;
-    width: inherit;
-    height: inherit;
-  }
 }

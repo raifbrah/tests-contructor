@@ -1,7 +1,7 @@
-<mat-card>
-  <mat-card-header class="card__header">
-    <mat-card-title
-      >{{ questionIndex + 1 }}.
+<article class="question-card">
+  <header class="card__header">
+    <div class="card__title">
+      <div class="question__input-number">{{ questionIndex + 1 }}.</div>
       <input
         class="question__input"
         type="text"
@@ -12,10 +12,15 @@
           'disabled-input-text': testType === 'passing' || testType === 'watch',
         }"
       />
-    </mat-card-title>
+    </div>
 
     @if (testType !== 'passing' && testType !== 'watch') {
-      <button (click)="changeQuestionType()" mat-stroked-button>
+      <button
+        tuiButton
+        size="s"
+        appearance="flat"
+        (click)="changeQuestionType()"
+      >
         @if (question.type === 'single') {
           Один вариант ответа
         } @else if (question.type === 'multiple') {
@@ -23,9 +28,9 @@
         }
       </button>
     }
-  </mat-card-header>
+  </header>
 
-  <mat-card-content>
+  <section class="card__content">
     <div class="questions">
       @for (answer of question.answers; track answer.id) {
         <app-answer
@@ -40,14 +45,18 @@
     @if (testType !== 'passing' && testType !== 'watch') {
       <div class="card-actions">
         <button
-          mat-stroked-button
+          tuiButton
+          size="s"
+          appearance="secondary"
           class="task__add-option-btn"
           (click)="addNewAnswer()"
         >
           + добавить
         </button>
         <button
-          matButton="filled"
+          tuiButton
+          size="s"
+          appearance="primary"
           class="error-button"
           (click)="onRemoveQuestion()"
         >
@@ -55,5 +64,5 @@
         </button>
       </div>
     }
-  </mat-card-content>
-</mat-card>
+  </section>
+</article>

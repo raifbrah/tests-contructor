@@ -1,74 +1,83 @@
 <div class="tests-header">
   @if (testsType === 'passed-tests') {
-    <h2>Пройденные тесты</h2>
+  <h2>Пройденные тесты</h2>
   } @else {
-    <h2>Мои тесты</h2>
-    <a
-      matButton="filled"
-      [routerLink]="['test']"
-      [queryParams]="{ type: 'create' }"
-      >Создать</a
-    >
+  <h2>Мои тесты</h2>
+  <a
+    tuiButton
+    appearance="primary"
+    [routerLink]="['test']"
+    [queryParams]="{ type: 'create' }"
+  >
+    Создать
+  </a>
   }
 </div>
 
-<table
-  mat-table
-  [dataSource]="
-    testsType === 'passed-tests' ? getTests('completed') : getTests()
-  "
-  class="mat-elevation-z8"
->
-  <ng-container matColumnDef="name">
-    <th mat-header-cell *matHeaderCellDef>Название</th>
-    <td mat-cell *matCellDef="let test">{{ test.name }}</td>
-  </ng-container>
-
-  @if (testsType !== 'passed-tests') {
-    <ng-container matColumnDef="created_at">
-      <th mat-header-cell *matHeaderCellDef>Дата создания</th>
-      <td mat-cell *matCellDef="let test">
-        {{ test.created_at | date: 'dd.MM.yyyy' }}
-      </td>
-    </ng-container>
-
-    <ng-container matColumnDef="participants_count">
-      <th mat-header-cell *matHeaderCellDef>Кол-во участников</th>
-      <td mat-cell *matCellDef="let test">{{ test.participants_count }}</td>
-    </ng-container>
-  } @else {
-    <ng-container matColumnDef="passed_at">
-      <th mat-header-cell *matHeaderCellDef>Дата прохождения</th>
-      <td mat-cell *matCellDef="let test">
-        {{ test.passed_at | date: 'dd.MM.yyyy' }}
-      </td>
-    </ng-container>
-
-    <ng-container matColumnDef="result">
-      <th mat-header-cell *matHeaderCellDef>Результат</th>
-      <td mat-cell *matCellDef="let test">{{ test.result }}</td>
-    </ng-container>
-  }
-
-  <ng-container matColumnDef="actions">
-    <th mat-header-cell *matHeaderCellDef>Действия</th>
-    <td mat-cell *matCellDef="let test">
-      @if (testsType === 'passed-tests') {
-        <button matButton="outlined" (click)="watchTest(test)">Открыть</button>
+<table class="tests-table">
+  <thead>
+    <tr>
+      <th>Название</th>
+      @if (testsType !== 'passed-tests') {
+      <th>Дата создания</th>
+      <th>Кол-во участников</th>
       } @else {
-        <button mat-icon-button (click)="openTest(test)">
-          <mat-icon>open_in_browser</mat-icon>
-        </button>
-        <button mat-icon-button (click)="editTest(test)">
-          <mat-icon>edit</mat-icon>
-        </button>
-        <button mat-icon-button color="warn" (click)="deleteTest(test)">
-          <mat-icon>delete</mat-icon>
-        </button>
+      <th>Дата прохождения</th>
+      <th>Результат</th>
       }
-    </td>
-  </ng-container>
-
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      <th>Действия</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for ( test of testsType === 'passed-tests' ? getTests('completed') :
+    getTests(); track test.id ) {
+    <tr>
+      <td>{{ test.name }}</td>
+      @if (testsType !== 'passed-tests') {
+      <td>{{ test.created_at | date : 'dd.MM.yyyy' }}</td>
+      <td>{{ test.participants_count }}</td>
+      } @else {
+      <td>{{ test.passed_at | date : 'dd.MM.yyyy' }}</td>
+      <td>{{ test.result }}</td>
+      }
+      <td class="tests-table__actions">
+        @if (testsType === 'passed-tests') {
+        <button
+          tuiButton
+          size="s"
+          appearance="primary"
+          (click)="watchTest(test)"
+        >
+          Открыть
+        </button>
+        } @else {
+        <button
+          tuiButton
+          size="s"
+          appearance="secondary"
+          (click)="openTest(test)"
+        >
+          Открыть
+        </button>
+        <button
+          tuiButton
+          size="s"
+          appearance="secondary"
+          (click)="editTest(test)"
+        >
+          Редактировать
+        </button>
+        <button
+          tuiButton
+          size="s"
+          appearance="primary"
+          (click)="deleteTest(test)"
+        >
+          Удалить
+        </button>
+        }
+      </td>
+    </tr>
+    }
+  </tbody>
 </table>

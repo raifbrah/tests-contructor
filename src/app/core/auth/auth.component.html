@@ -1,31 +1,58 @@
-<mat-card class="auth-container" appearance="outlined">
-  <mat-card-header>
-    <mat-card-title class="auth__title">{{ title }}</mat-card-title>
-  </mat-card-header>
-  <mat-card-content>
-    <form class="auth__form" [formGroup]="authForm">
-      @if (authService.isError()) {
-        <p class="auth__error-text">Неверные данные пользователя!</p>
-      }
-      <mat-form-field appearance="outline">
-        <mat-label>Email</mat-label>
-        <input formControlName="email" matInput type="email" />
-      </mat-form-field>
+<section class="auth-container">
+  <h1 class="auth__title">{{ title }}</h1>
 
-      <mat-form-field appearance="outline">
-        <mat-label>Password</mat-label>
-        <input formControlName="password" matInput type="password" />
-      </mat-form-field>
-    </form>
-  </mat-card-content>
-  <mat-card-actions class="auth__actions">
-    <button matButton>Забыли пароль?</button>
-    @if (authType === 'login') {
-      <button matButton="filled" (click)="login()" [disabled]="!authForm.valid">Войти</button>
-    } @else {
-      <button matButton="filled" (click)="register()" [disabled]="!authForm.valid">
-        Зарегистрироваться
-      </button>
+  <form class="auth__form" [formGroup]="authForm">
+    @if (authService.isError()) {
+    <p class="auth__error-text">Неверные данные пользователя!</p>
     }
-  </mat-card-actions>
-</mat-card>
+
+    <label class="auth__field">
+      <span class="auth__label">Email</span>
+      <input
+        formControlName="email"
+        type="email"
+        class="auth__input"
+        placeholder="you@example.com"
+      />
+    </label>
+
+    <label class="auth__field">
+      <span class="auth__label">Пароль</span>
+      <input
+        formControlName="password"
+        type="password"
+        class="auth__input"
+        placeholder="Введите пароль"
+      />
+    </label>
+  </form>
+
+  <div class="auth__actions">
+    <button tuiButton appearance="secondary" size="s" type="button">
+      Забыли пароль?
+    </button>
+    @if (authType === 'login') {
+    <button
+      tuiButton
+      appearance="primary"
+      size="m"
+      type="button"
+      (click)="login()"
+      [disabled]="!authForm.valid"
+    >
+      Войти
+    </button>
+    } @else {
+    <button
+      tuiButton
+      appearance="primary"
+      size="m"
+      type="button"
+      (click)="register()"
+      [disabled]="!authForm.valid"
+    >
+      Зарегистрироваться
+    </button>
+    }
+  </div>
+</section>

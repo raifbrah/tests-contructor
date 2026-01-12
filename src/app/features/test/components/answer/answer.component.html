@@ -35,10 +35,24 @@
   />
 
   @if (testType !== 'passing' && testType !== 'watch') {
-    <button matButton="outlined" (click)="answer.correct = !answer.correct">
+    <button
+      tuiButton
+      size="s"
+      appearance="secondary"
+      type="button"
+      (click)="answer.correct = !answer.correct"
+    >
       Правильный: {{ answer.correct }}
     </button>
 
-    <button matButton="outlined" (click)="onRemoveAnswer()">Удалить</button>
+    <button
+      tuiButton
+      size="s"
+      appearance="primary"
+      type="button"
+      (click)="onRemoveAnswer()"
+    >
+      Удалить
+    </button>
   }
 </div>

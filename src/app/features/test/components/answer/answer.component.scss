@@ -1,16 +1,22 @@
 .answer {
   display: flex;
   gap: 0.5rem;
+  align-items: center;
 }
 
 .answer__input {
   font-size: 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid #e5e7eb;
+  padding: 0.35rem 0.6rem;
+  background: #ffffff;
+  color: #111827;
 }
 
 .right-answer {
-  color: green;
+  color: green !important;
 }
 
 .wrong-answer {
-  color: red;
+  color: red !important;
 }
