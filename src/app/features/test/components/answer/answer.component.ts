@@ -3,14 +3,23 @@ import { FormsModule } from '@angular/forms';
 import { Answer, Question } from '../../interfaces/test.interface';
 import { NgClass } from '@angular/common';
 import { TestsService } from '../../../../services/tests.service';
-import { TuiButton } from '@taiga-ui/core';
+import { TuiButton, TuiLabel } from '@taiga-ui/core';
+import { TuiCheckbox, TuiChip, TuiRadio } from '@taiga-ui/kit';
 
 @Component({
   selector: 'app-answer',
   templateUrl: './answer.component.html',
   styleUrl: './answer.component.scss',
   standalone: true,
-  imports: [FormsModule, TuiButton, NgClass],
+  imports: [
+    FormsModule,
+    TuiButton,
+    NgClass,
+    TuiChip,
+    TuiCheckbox,
+    TuiLabel,
+    TuiRadio,
+  ],
 })
 export class AnswerComponent {
   @Input() answer!: Answer;

@@ -4,65 +4,138 @@
     <span class="toolbar-spacer"></span>
 
     @if (authService.isLoggedIn()) {
-    <nav class="nav-list nav-right">
-      <a
-        tuiButton
-        size="s"
-        appearance="secondary"
-        routerLink=""
-        routerLinkActive="active"
-      >
-        Мои тесты
-      </a>
-      <a
-        tuiButton
-        size="s"
-        appearance="secondary"
-        routerLink="/passed-tests"
-        routerLinkActive="active"
-      >
-        Завершенные
-      </a>
-      <a
-        tuiButton
-        size="s"
-        appearance="secondary"
-        routerLink="/profile"
-        routerLinkActive="active"
-      >
-        Профиль
-      </a>
-      <button
-        tuiButton
-        size="s"
-        appearance="primary"
-        type="button"
-        (click)="logout()"
-      >
-        Выйти
-      </button>
-    </nav>
+      <nav class="nav-list nav-right desktop-nav">
+        <a
+          tuiButton
+          size="s"
+          appearance="secondary"
+          routerLink=""
+          routerLinkActive="active"
+        >
+          Мои тесты
+        </a>
+        <a
+          tuiButton
+          size="s"
+          appearance="secondary"
+          routerLink="/passed-tests"
+          routerLinkActive="active"
+        >
+          Завершенные
+        </a>
+        <a
+          tuiButton
+          size="s"
+          appearance="secondary"
+          routerLink="/profile"
+          routerLinkActive="active"
+        >
+          Профиль
+        </a>
+        <button
+          tuiButton
+          size="s"
+          appearance="primary"
+          type="button"
+          (click)="logout()"
+        >
+          Выйти
+        </button>
+      </nav>
+
+      <div class="mobile-sidebar">
+        <button
+          tuiButton
+          size="s"
+          type="button"
+          (click)="isSidebarOpen.set(true)"
+        >
+          <tui-icon icon="@tui.menu" />
+        </button>
+
+        <tui-drawer
+          *tuiPopup="isSidebarOpen()"
+          direction="left"
+          class="sidebar-drawer"
+          [overlay]="true"
+          (click.self)="onSidebarClose()"
+        >
+          <header class="sidebar-header">
+            <h2 tuiHeader class="sidebar-header-h2">
+              <div tuiTitle>TestsConstructor</div>
+              <div tuiAccessories>
+                <button tuiButton type="button" (click)="onSidebarClose()">
+                  Close
+                </button>
+              </div>
+            </h2>
+          </header>
+          <nav
+            tuiGroup
+            class="group mobile-nav"
+            [collapsed]="true"
+            orientation="vertical"
+          >
+            <a
+              tuiButton
+              size="m"
+              appearance="flat"
+              routerLink=""
+              routerLinkActive="active"
+            >
+              Мои тесты
+            </a>
+            <a
+              tuiButton
+              size="m"
+              appearance="flat"
+              routerLink="/passed-tests"
+              routerLinkActive="active"
+            >
+              Завершенные
+            </a>
+            <a
+              tuiButton
+              size="m"
+              appearance="flat"
+              routerLink="/profile"
+              routerLinkActive="active"
+            >
+              Профиль
+            </a>
+            <button
+              tuiButton
+              size="m"
+              appearance="flat"
+              type="button"
+              (click)="logout()"
+            >
+              Выйти
+            </button>
+          </nav>
+        </tui-drawer>
+      </div>
     } @else {
-    <nav class="nav-list nav-right">
-      <a
-        tuiButton
-        size="s"
-        appearance="secondary"
-        routerLink="/register"
-        routerLinkActive="active"
-      >
-        Регистрация
-      </a>
-      <a
-        tuiButton
-        size="s"
-        appearance="primary"
-        routerLink="/login"
-        routerLinkActive="active"
-      >
-        Войти
-      </a>
-    </nav>
+      <nav class="nav-list nav-right">
+        <a
+          tuiButton
+          size="s"
+          appearance="secondary"
+          routerLink="/register"
+          routerLinkActive="active"
+        >
+          Регистрация
+        </a>
+        <a
+          tuiButton
+          size="s"
+          appearance="primary"
+          routerLink="/login"
+          routerLinkActive="active"
+        >
+          Войти
+        </a>
+      </nav>
     }
   </div>
 </header>

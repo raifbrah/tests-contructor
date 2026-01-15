@@ -36,3 +36,38 @@
 .nav-right :global(button[tuibutton]) {
   text-transform: none;
 }
+
+.sidebar-drawer {
+  top: 0;
+  border-radius: 0;
+  inline-size: 20rem;
+}
+
+.sidebar-header {
+  position: sticky;
+}
+
+.sidebar-header-h2 {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.mobile-sidebar {
+  display: none;
+}
+
+.mobile-nav {
+  width: 100%;
+  gap: 1rem;
+}
+
+@media (max-width: 768px) {
+  .mobile-sidebar {
+    display: block;
+  }
+
+  .desktop-nav {
+    display: none;
+  }
+}

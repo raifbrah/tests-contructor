@@ -47,6 +47,10 @@ export class TestsTableComponent {
     this.testsService.deleteTest(test.id);
   }
 
+  deletePassedTest(test: Test): void {
+    this.testsService.deletePassedTest(test.id);
+  }
+
   openTest(test: Test): void {
     this.router.navigate(['/test'], {
       queryParams: { id: test.id, type: 'passing' },

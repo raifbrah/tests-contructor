@@ -48,6 +48,13 @@ export class TestsService {
     this.save();
   }
 
+  public deletePassedTest(testId: number): void {
+    this.completedTestsList = this.completedTestsList.filter(
+      (test) => test.id !== testId,
+    );
+    this.save();
+  }
+
   public completeTest(test: Test) {
     let completionTest = { ...test };
     let numberOfCorrectAnswers = 0;

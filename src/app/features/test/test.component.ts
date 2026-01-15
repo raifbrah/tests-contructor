@@ -7,14 +7,21 @@ import { TestsService } from '../../services/tests.service';
 import { TestType } from './interfaces/test-type.interface';
 import { NgClass } from '@angular/common';
 import { AuthService } from '../../core/auth/auth.service';
-import { TuiButton } from '@taiga-ui/core';
+import { TuiButton, TuiLabel, TuiTextfield } from '@taiga-ui/core';
 
 @Component({
   selector: 'app-test',
   templateUrl: './test.component.html',
   styleUrl: './test.component.scss',
   standalone: true,
-  imports: [TuiButton, FormsModule, QuestionComponent, RouterLink, NgClass],
+  imports: [
+    TuiButton,
+    FormsModule,
+    QuestionComponent,
+    RouterLink,
+    NgClass,
+    TuiTextfield,
+  ],
 })
 export class TestComponent {
   public testType: TestType = 'create';

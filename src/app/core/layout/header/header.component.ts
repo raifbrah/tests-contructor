@@ -1,7 +1,14 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { AuthService } from '../../auth/auth.service';
-import { TuiButton } from '@taiga-ui/core';
+import {
+  TuiButton,
+  TuiGroup,
+  TuiIcon,
+  TuiPopup,
+  TuiTextfield,
+} from '@taiga-ui/core';
+import { TuiDrawer } from '@taiga-ui/kit';
 
 @Component({
   selector: 'app-header',
@@ -12,12 +19,23 @@ import { TuiButton } from '@taiga-ui/core';
     TuiButton,
     RouterLink,
     RouterLinkActive,
+    TuiDrawer,
+    TuiButton,
+    TuiTextfield,
+    TuiPopup,
+    TuiIcon,
+    TuiGroup,
   ],
 })
 export class HeaderComponent {
   public readonly authService = inject(AuthService);
+  public readonly isSidebarOpen = signal(false);
 
   logout(): void {
     this.authService.logout();
+  }
+
+  public onSidebarClose(): void {
+    this.isSidebarOpen.set(false);
   }
 }

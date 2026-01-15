@@ -7,17 +7,21 @@
         class="answer__checkbox"
         type="checkbox"
         [disabled]="testType === 'watch'"
+        tuiCheckbox
       />
     } @else {
-      <input
-        [(ngModel)]="question.group_answer"
-        [value]="answer.id"
-        (change)="saveAnswer()"
-        class="answer__checkbox"
-        type="radio"
-        [attr.name]="question.id"
-        [disabled]="testType === 'watch'"
-      />
+      <label tuiLabel>
+        <input
+          [(ngModel)]="question.group_answer"
+          [value]="answer.id"
+          (change)="saveAnswer()"
+          class="answer__checkbox"
+          type="radio"
+          [attr.name]="question.id"
+          [disabled]="testType === 'watch'"
+          tuiRadio
+        />
+      </label>
     }
   }
 
@@ -35,15 +39,10 @@
   />
 
   @if (testType !== 'passing' && testType !== 'watch') {
-    <button
-      tuiButton
-      size="s"
-      appearance="secondary"
-      type="button"
-      (click)="answer.correct = !answer.correct"
-    >
-      Правильный: {{ answer.correct }}
-    </button>
+    <label appearance="outline-grayscale" tuiChip>
+      <input tuiCheckbox type="checkbox" [(ngModel)]="answer.correct" />
+      <span>Правильный</span>
+    </label>
 
     <button
       tuiButton
