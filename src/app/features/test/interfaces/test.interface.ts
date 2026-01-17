@@ -5,7 +5,7 @@ export interface Test {
   complete_user_id?: number;
   created_at: number;
   questions: Question[];
-  participants_count?: number;
+  participants: number[];
   passed_at?: number;
   result?: string;
 }

@@ -59,6 +59,7 @@ export class TestsService {
     let completionTest = { ...test };
     let numberOfCorrectAnswers = 0;
     const numberOfQuestions = completionTest.questions.length;
+    const currentUserId = this.authService.currentUser()!.id;
 
     completionTest.questions.map((question) => {
       if (question.type === 'single') {
@@ -83,6 +84,11 @@ export class TestsService {
       }
     });
 
+    if (!test.participants.includes(currentUserId!)) {
+      test.participants.push(currentUserId!);
+    }
+
+    test.passed_at = Date.now();
     test.result = `${numberOfCorrectAnswers}/${numberOfQuestions}`;
     test.complete_user_id = this.authService.currentUser()!.id;
     this.completedTestsList = this.completedTestsList.filter(
@@ -102,7 +108,7 @@ export class TestsService {
       id: 1,
       name: 'Тест 1',
       created_at: Date.now(),
-      participants_count: 5,
+      participants: [],
       passed_at: Date.now(),
       questions: [],
     },

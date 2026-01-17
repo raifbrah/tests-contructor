@@ -55,6 +55,7 @@ export class TestComponent {
           author_id: this.authService.currentUser()!.id,
           created_at: Date.now(),
           questions: [],
+          participants: [],
         };
       }
     });
